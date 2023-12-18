@@ -1,0 +1,18 @@
+---
+title: Plan
+description: Define a subcription or "add on" plan with its price.
+---
+
+Plans define a base price and name for a recurring purchase in your product. Each subscription has at least one plan associated with it.
+
+## The plan model
+
+Plan is a simple model that sets the price of a given subscription. A subscription can have several plans, which are common in business models with "add on" features.
+
+### Properties
+
+| Name    | Type                                | Required | Description       |
+| ------- | ----------------------------------- | -------- | ----------------- |
+| `id`    | `string`                            | Yes      | Unique identifier |
+| `name`  | `string`                            | No       | A name of a plan  |
+| `price` | [`Price`](/revenue-resources/price) | Yes      | Subscription price|

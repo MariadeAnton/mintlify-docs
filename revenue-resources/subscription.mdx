@@ -1,0 +1,25 @@
+---
+title: Subscription
+description: An agreement by an organization to provide services to a customer.
+---
+
+Subscriptions charge a [customer](/core-resources/customer) on a recurring basis. Subscriptions are a contract by an organization to provide services to a customer.
+
+A subscription sets the top level attributes for the contract if it's active, when it starts and ends, trial dates and its currency.
+
+## The subscription model
+
+Subscriptions let customers make recurring payments to use your product in a certain way. Each subscription has a status that can change over time, a currency and properties to specify it's duration and it's trial.
+### Properties
+
+| Name             | Type        | Required | Description                                                                |
+| ---------------- | ----------- | -------- | -------------------------------------------------------------------------- |
+| `id`             | `string`    | Yes      | Unique identifier for the object                                           |
+| `status`         | `string`    | Yes      | Status of the subscription. Possible values are `incomplete`, `incomplete_expired`, `trialing`, `active`, `past_due`, `canceled`, or `unpaid`.                                         |
+| `currency`       | `currency`  | Yes      | Three-letter [ISO-4271 currency code](https://www.iso.org/iso-4217-currency-codes.html).|
+| `started_at`     | `timestamp` | Yes      | [Unix epoch time](https://en.wikipedia.org/wiki/Unix_time) the subscription was started                                    |
+| `canceled_at`    | `timestamp` | No       | [Unix epoch time](https://en.wikipedia.org/wiki/Unix_time) the subscription was canceled                                   |
+| `trial_start_at` | `timestamp` | No       | When applicable, [Unix epoch time](https://en.wikipedia.org/wiki/Unix_time) the trial began                                  |
+| `trial_end_at`   | `timestamp` | No       | When applicable, [Unix epoch time](https://en.wikipedia.org/wiki/Unix_time)the trial ended at                               |
+| `period_end`     | `timestamp` | Yes      | [Unix epoch time](https://en.wikipedia.org/wiki/Unix_time) of the end of the period the subscription has been invoiced for |
+| `ended_at`       | `timestamp` | No       | [Unix epoch time](https://en.wikipedia.org/wiki/Unix_time) the subscription ends                                           |

@@ -1,0 +1,19 @@
+---
+title: Subscription Item
+description: An individual subscription product bought by a customer
+---
+
+Subscription items represent individual subscription products that a [customer](/core-resources/customer) bought.
+
+Use subscription items to connect several plans to a subscription.
+
+## The subscription item model
+
+Specifies one of the plan items that will be part of a subscription.
+### Properties
+
+| Name       | Type                              | Required | Description                |
+| ---------- | --------------------------------- | -------- | -------------------------- |
+| `id`       | `string`                          | Yes      | Unique identifier          |
+| `quantity` | `integer`                         | Yes      | The number of items bought |
+| `plan`     | [`Plan`](/revenue-resources/plan) | Yes      | Subscription Plan          |

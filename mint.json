@@ -1,15 +1,15 @@
 {
   "$schema": "https://mintlify.com/schema.json",
-  "name": "Starter Kit",
+  "name": "Valued's documentation",
   "logo": {
     "dark": "/logo/dark.svg",
     "light": "/logo/light.svg"
   },
   "favicon": "/favicon.svg",
   "colors": {
-    "primary": "#0D9373",
-    "light": "#07C983",
-    "dark": "#0D9373",
+    "primary": "#0E65DA",
+    "light": "#D8E6FA",
+    "dark": "#F3F8FD",
     "anchors": {
       "from": "#0D9373",
       "to": "#07C983"
@@ -18,61 +18,50 @@
   "topbarLinks": [
     {
       "name": "Support",
-      "url": "mailto:hi@mintlify.com"
+      "url": "mailto:support@valued.app"
     }
   ],
   "topbarCtaButton": {
     "name": "Dashboard",
-    "url": "https://dashboard.mintlify.com"
+    "url": "https://highly.valued.app/"
   },
-  "tabs": [
-    {
-      "name": "API Reference",
-      "url": "api-reference"
-    }
-  ],
-  "anchors": [
-    {
-      "name": "Documentation",
-      "icon": "book-open-cover",
-      "url": "https://mintlify.com/docs"
-    },
-    {
-      "name": "Community",
-      "icon": "slack",
-      "url": "https://mintlify.com/community"
-    },
-    {
-      "name": "Blog",
-      "icon": "newspaper",
-      "url": "https://mintlify.com/blog"
-    }
-  ],
   "navigation": [
     {
-      "group": "Get Started",
-      "pages": ["introduction", "quickstart", "development"]
+      "group": "Start here",
+      "pages": ["guides/getting-started"]
     },
     {
-      "group": "Essentials",
-      "pages": ["essentials/markdown", "essentials/code", "essentials/images", "essentials/settings", "essentials/navigation"]
+      "group": "Guides",
+      "pages": ["guides/authentication", "guides/capturing-behaviour", "guides/goals-and-signals", "guides/muting-a-customer"]
     },
     {
-      "group": "API Documentation",
-      "pages": ["api-reference/introduction"]
+      "group":"Integrations",
+      "pages":["integrations/sdks", "integrations/stripe", "integrations/segment", "integrations/intercom"]
     },
     {
-      "group": "Endpoint Examples",
-      "pages": [
-        "api-reference/endpoint/get",
-        "api-reference/endpoint/create",
-        "api-reference/endpoint/delete"
-      ]
+      "group":"Events",
+      "pages":["events/sync", "events/action", "events/screen", "events/pageview", "events/config", "events/revenue"]
+    },
+    {
+      "group":"Core Resources",
+      "pages":["core-resources/customer", "core-resources/user", "core-resources/goal", "core-resources/signal", "core-resources/membership"]
+    },
+    {
+      "group":"Revenue Resources",
+      "pages":["revenue-resources/overview", "revenue-resources/subscription", "revenue-resources/subscription-item", "revenue-resources/plan", "revenue-resources/price" , "revenue-resources/tiers", "revenue-resources/invoice", "revenue-resources/invoice-item"]
+    },
+    {
+      "group": "Introduction",
+      "pages": ["references/glossary", "references/changelog"]
+    },
+    {
+      "group": "Legal",
+      "pages": ["legal/subprocessors"]
     }
   ],
   "footerSocials": {
-    "twitter": "https://twitter.com/mintlify",
-    "github": "https://github.com/mintlify",
-    "linkedin": "https://www.linkedin.com/company/mintsearch"
+    "twitter/X": "https://twitter.com/valuedapp",
+    "github": "https://github.com/valued-app",
+    "linkedin": "https://www.linkedin.com/company/highly-valued"
   }
 }

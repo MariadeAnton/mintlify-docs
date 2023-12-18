@@ -1,0 +1,84 @@
+---
+title: Action
+description: Capturing actions your users perform
+---
+
+The `action` event category is for capturing and modeling activity associated with users and customers.
+
+Activities you might want to capture include: a customer or user being created, a user logging in, creating or updating data associated with a customer account, inviting a team member, or downloading a report.
+
+While both [user](/core-resources/user) and [customer](/core-resources/customer) information are optional, at least one of them is required.
+
+Actions can be specific to a user (updating their profile), specific for a customer (subscription payment received), or, in most cases, associated with both (the user invited a team member to a customer account).
+
+## Event format
+
+Action events are identified with `category=action`.
+
+### Customer created event
+
+Customer creation events to capture initial customer data.
+
+```json
+{
+    "category": "action",
+    "key": "customer.created",
+    "customer": {
+        "id": "124",
+        "name": "Greasy's Diner",
+        "location": {
+            "country": "US",
+            "state": "OR"
+        }
+    }
+}
+
+```
+
+### User created event
+
+User creation events to capture your initial user data.
+
+```json
+{
+    "category": "action",
+    "key": "user.created",
+    "user": {
+        "id": "457",
+        "name": "Susan Wentworth",
+        "email": "suzan.wentworth@greasysdiner.restaurant",
+        "location": {
+            "country": "US",
+            "state": "OR"
+        },
+        "hobbies": [
+            "cat shows",
+            "fixing things",
+        ]
+    },
+    "customer" : {
+        "id": "124"
+    }
+}
+```
+
+### User sale created event
+
+Once you've sent initial customer and user data with creation events, other events can just reference the id's the customer and user they are associated with.
+
+```json
+{
+    "category": "action",
+    "key": "sale.created",
+    "user": {
+        "id": "457"
+    },
+    "customer": {
+        "id": "124"
+    },
+    "attributes": {
+        "total": "213",
+        "currency": "USD"
+    }
+}
+```

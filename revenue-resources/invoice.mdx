@@ -1,0 +1,34 @@
+---
+title: Invoice
+description: Statements of amounts owed by a customer
+---
+
+Each subscription generates an invoice on the specified billing period. 
+
+## The invoice model
+
+The invoice specifies the amount owed and for what it is owed. It contains invoice items, which may include prorates when upgrades/downgrades happen.
+### Properties
+
+| Name            | Type      | Required | Description                                                |
+| --------------- | --------- | -------- | ---------------------------------------------------------- |
+| `id`            | `string`  | Yes      | Unique identifier                                          |
+| `subscription`  | `string`  | Yes      | A name of a subscription                                   |
+| `total`         | `integer` | Yes      | A total amount that was paid                               |
+| `currency`      | `string`  | Yes      | [3 letter ISO currency code](https://www.iso.org/iso-4217-currency-codes.html) for this invoice                    |
+| `subtotal`      | `integer` | No       | Total cost of the items before discounts and taxes are applied                                          |
+| `status`        | `string`  | No       | Invoices can have one of five statuses: `draft`, `open`, `paid`, `void`, `uncollectible`.                                                |
+| `finalized_at`  | `integer` | No       | [Unix epoch timestamp](https://en.wikipedia.org/wiki/Unix_time)                                         |
+| `paid_at`       | `integer` | No       |[Unix epoch timestamp](https://en.wikipedia.org/wiki/Unix_time)                                           |
+| `discount`      | `integer` | No       | Discounted amount applied to the invoice                                         |
+| `tax`           | `integer` | No       | Tax value                                                  |
+| `invoice_items` | `array`   | No       | A list of [Invoice Items](/revenue-resources/invoice-item) |
+
+
+| Invoice `status` |                                                                     Description                                                                    |
+|:----------------:|:--------------------------------------------------------------------------------------------------------------------------------------------------:|
+| `draft`          | This invoice isn't ready to use. All invoices start in  `draft` status.                                                                            |
+| `open`           | This invoice is finalized and awaiting payment                                                                                                     |
+| `paid`           | This invoice is paid.                                                                                                                              |
+| `void`           | This invoice is cancelled.                                                                                                                         |
+| `uncollectible`  | Customer is unlikely to pay the invoice. Use this status when your payments provider automatically supports it. Otherwise, choose `void` or `paid` |

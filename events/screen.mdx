@@ -1,0 +1,39 @@
+---
+title: Screen
+description: Users navigating your native mobile and desktop apps
+---
+
+The `screen` event category enables you to understand how a user is navigating your native mobile and desktop apps.
+
+You will notice that the [user](/core-resources/user) is required, but the [customer](/core-resources/customer) is optional. `screen` events are undertaken by a user, but not nessicarily bound to a [customer](/core-resources/customer) account. It is recommended to include the [customer](/core-resources/customer) id whenever the screen being viewed is associated with a customer account.
+
+## Event format
+
+Screen events are identified with `category=screen`.
+
+### Viewing a mobile dashboard
+
+```json
+{
+    "category": "screen",
+    "user": { 
+        "id": "123" 
+    },
+    "customer": { 
+        "id": "12"
+    },
+    "key": "dashboard.view",
+    "meta": {
+        "app": {
+            "version": "3.0.5"
+        },
+        "device": {
+            "type": "mobile"
+        },
+        "os": {
+            "type": "Android",
+            "version": "13"
+        },
+    },
+}
+```

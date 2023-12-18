@@ -1,0 +1,30 @@
+---
+title: Membership
+description: Associating users and customers with roles
+---
+
+Customer memberships are the way we track the relation between a User and Customer. The relationship can include when the date when the user joined and left and, their role in your applications.
+
+## The membership model
+
+### Properties
+
+`user_id` _string_
+
+Unique identifier for the user in your application.
+
+`customer_id`  _string_
+
+Unique identifier for the customer in your application.
+
+`role`  _string_
+
+The user's role within the customer, eg. admin, user, billing.
+
+`joined_at` _integer_
+
+Date when the User joined the Customer.
+
+`left_at` _integer_
+
+Date when the User left the Customer.

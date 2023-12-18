@@ -1,0 +1,39 @@
+---
+title: User
+description: The users of your product
+---
+
+Valued focuses on identifiable (registered) users within your product. Each user requires a unique id in your product which can be used to identify the user on Valued. 
+
+Users can belong to more than one [customer](/core-resources/customer), giving you the flexibility to model user membership as your product models it, and the power to understand which customer account they are most active in.
+
+## The user model
+
+The user model has all the information relating to the user such as the unique identifier in your systems, their name, email, location and other identifying information related to other services.
+
+### Properties
+
+`id` _string_
+
+Unique identifier for the user in your application.
+
+`name`  _string_
+
+The name of the user.
+
+`email` _string_
+
+The email for the user.
+
+`website` _string_
+
+The website for the user.
+
+`links`  _[string]_
+
+Custom links to other services related to the user.
+
+`location.country`  _string_
+
+The country the user is located. This should be in the ISO 3166-1 alpha-2 format.
+

@@ -1,0 +1,25 @@
+---
+title: Tiers
+description: Use tiers to define your pricing.
+---
+
+Each `tiers` element represents a pricing tier in your product.
+
+## The tier model
+
+Use it to define each pricing tier individually. 
+
+If your product doesn't have tiers, it's a single-tier product. Set `up_to` to `NULL`. 
+
+Use `unit_amount` when you charge per unit. For example, "User based pricing", $10/user.
+
+Use `flat_amount` when you charge one total cost for a given subscription, for example, "Premium plan", that has prices for $20/month, $200/year.
+
+
+### Properties
+
+| Name          | Type     | Required | Description     |
+| ------------- | -------- | -------- | --------------- |
+| `unit_amount` | `integer` | Yes      | Per unit price for units relevant to the tier.|
+| `flat_amount` | `integer` | Yes      | Price for the entire tier. |
+| `up_to`       | `integer` | Yes      | Up to and including to this quantity will be contained in the tier.|

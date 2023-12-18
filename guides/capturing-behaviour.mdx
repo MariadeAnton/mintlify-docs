@@ -1,0 +1,92 @@
+---
+title: Capturing Behaviour
+description: Capturing the behaviour of your users and customers
+---
+
+Capturing the behaviour of your [users](/core-resources/user) and [customers](/core-resources/customer) is the best way to understand how they are using your product by tracking their adoption, highlighting expansion opportunities, and monitoring retention risks. In this guide you will learn how to begin capturing that data.
+
+Valued offers you ways to capture behaviour from the front and back ends of your application.
+
+## Pre-requisites
+
+It's worth familiarizing yourself with the guides on [authentication](/guides/authentication) and [SDKs](/integrations/sdks) as they will both be used in the following steps.
+
+## Front end
+
+Our `valued.js` library will automatically capture all the [pageview](/events/pageview) events that occur on your application.
+
+### 1. Add `valued.js`
+
+To include the `valued.js` script in your application, add the snippet below between the `<head> ... </head>` section of your page.
+
+```html
+<script async 
+  api-key="{api-key}"
+  customer-id="{customer-id}" <!only when available>
+  user-id="{user-id}" 
+  src="https://cdn.valued.app/libs/js/latest/valued.js">
+</script>
+```
+
+You can also do this in one line:
+
+```html
+<script async api-key="{api-key}" customer-id="{customer-id}" user-id="{user-id}" src="https://cdn.valued.app/libs/js/latest/valued.js"></script>
+```
+
+Make sure to change the `api-key` to match the settings on your Integrations page, as well as the `customer-id` and `user-id`s to match the user using your application, and the customer they belong to.
+
+### 2. Adjust your Content Security Policy (CSP)
+
+Your website might use a Content Security Policy (CSP) to secure it. 
+
+In this case, you need to add Valued to your trusted sources of script execution, in [`connect-src`](https://developer.mozilla.org/en-US/docs/Web/HTTP/Headers/Content-Security-Policy/connect-src): 
+
+- `cdn.valued.app`
+- `ingest.valued.app`
+
+```
+Content-Security-Policy: connect-src 'cdn.valued.app' 'ingest.valued.app';
+```
+
+In which `cdn.valued.app` is the Valued JavaScript library measuring Pageviews, and `ingest.valued.app` stores them.
+
+### 3. Check live data coming in
+
+Once you've set up the Frontend Analytics Library, you can head back to [https://highly.valued.app/](https://highly.valued.app/), open your project and see [pageview events](/core/event-definitions#page-view-events) and sessions coming through from your Users and Customers.
+
+## Back end
+
+In the following guide we are going send an event for when a new [user](/core-resources/user) is created on a [customers]((/core-resources/customer)) installation
+
+### 1. Setup the client
+
+```python
+import os
+import valued
+
+client = valued.Client(api_key=os.environ['VALUED_API_KEY'])
+```
+
+### 2. Send the event
+
+```python
+### ^ YOUR CODE CREATING THE USER
+
+client.action('user.created', {
+  'user': {
+    'id': '2134-1241-kmgl-6547',
+    'name': 'Lyra Silvertongue',
+    'email': 'lyra@jordancollege.edu',
+    'location': {
+      'country': 'GB', 
+      'city': 'Oxford'
+      }
+    }
+  'customer': {'id': '2984-asdm-4302-kmdf'},
+})
+```
+
+### 3. Check the data
+
+In this example we created a user, so you should be able to head back to [https://highly.valued.app/](https://highly.valued.app/), open your project and the new user from the Users menu.

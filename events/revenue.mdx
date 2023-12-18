@@ -1,0 +1,241 @@
+---
+title: Revenue
+description: Syncing your revenue information
+---
+
+The revenue event is for updating information relating to your [customers](/core_resources/customer) subscriptions to your product and the invoices you send to them for payment.
+
+All revenue events require a [customer](/core_resources/customer) and a [subscription](revenue_resources/subscription) but all other resources are optional. To find more details on the resources please use our Revenue Resources section.
+
+## Event format
+
+Revenue events are identified with `category=revenue`.
+
+### Subscription
+
+```json
+{
+  "category": "revenue",
+  "customer": {
+    "id": "123"
+  },
+  "subscription": {
+    "source_key": "sub-321",
+    "started_at": 1655384214,
+    "status": "active",
+    "currency": "USD"
+  }
+}
+```
+
+### Subscription with subscription items
+
+```json
+{
+  "category": "revenue",
+  "customer": {
+    "id": "valued-cus-312"
+  },
+  "subscription": {
+    "source_key": "sub-321",
+    "started_at": 1655384214,
+    "status": "active",
+    "currency": "USD"
+  },
+  "subscription_items": [
+    {
+      "source_key": "sub-item-1",
+      "quantity": 2,
+      "plan": {
+        "source_key": "plan-999-monthly",
+        "name": "Solo Plan",
+        "price": {
+          "source_key": "price-999-monthly",
+          "name": "9.99 / month",
+          "interval": "month",
+          "interval_count": 12,
+          "type": "recurring",
+          "billing_scheme": "per_unit",
+          "currency": "USD",
+          "unit_amount": 999,
+          "active": true
+        }
+      }
+    },
+    {
+      "source_key": "sub-item-2",
+      "quantity": 1,
+      "plan": {
+        "source_key": "plan-399-monthly-plus",
+        "name": "Solo Plan Plus",
+        "price": {
+          "source_key": "price-399-monthly-plus",
+          "name": "3.99 / month - plus",
+          "interval": "month",
+          "interval_count": 12,
+          "type": "recurring",
+          "billing_scheme": "per_unit",
+          "currency": "USD",
+          "unit_amount": 399,
+          "active": true
+        }
+      }
+    }
+  ]
+}
+```
+
+### Subscription with multiple tiers
+
+```json
+{
+  "category": "revenue",
+  "customer": {
+    "id": "valued-cus-312"
+  },
+  "subscription": {
+    "source_key": "sub-321",
+    "started_at": 1655384214,
+    "status": "active",
+    "currency": "USD"
+  },
+  "subscription_items": [
+    {
+      "source_key": "sub-item-1",
+      "quantity": 2,
+      "plan": {
+        "source_key": "plan-999-monthly",
+        "name": "Solo Plan",
+        "price": {
+          "source_key": "price-999-monthly",
+          "name": "9.99 / month",
+          "interval": "month",
+          "interval_count": 12,
+          "type": "recurring",
+          "billing_scheme": "per_unit",
+          "currency": "USD",
+          "unit_amount": 999,
+          "active": true
+        }
+      }
+    },
+    {
+      "source_key": "sub-item-2",
+      "quantity": 1,
+      "plan": {
+        "source_key": "plan-399-monthly-plus",
+        "name": "Solo Plan Plus",
+        "price": {
+          "source_key": "price-399-monthly-plus",
+          "name": "3.99 / month - plus",
+          "interval": "month",
+          "interval_count": 12,
+          "type": "recurring",
+          "billing_scheme": "per_unit",
+          "currency": "USD",
+          "active": true,
+          "tiers": [
+            {
+              "unit_amount": 399,
+              "flat_amount": 100,
+              "up_to": 500
+            },
+            {
+              "unit_amount": 199,
+              "flat_amount": 299,
+              "up_to": 399
+            }
+          ]
+        }
+      }
+    }
+  ]
+}
+```
+
+### Subscription with an invoice
+
+```json
+{
+  "category": "revenue",
+  "customer": {
+    "id": "valued-cus-312"
+  },
+  "subscription": {
+    "source_key": "sub-321",
+    "started_at": 1655384214,
+    "status": "active",
+    "currency": "USD"
+  },
+  "invoice": {
+    "source_key": "inv-924",
+    "subscription": "sub-321",
+    "total": 1000,
+    "currency": "USD",
+    "status": "paid",
+    "finalized_at": 1655384214,
+    "paid_at": 1655387324,
+    "subtotal": 1000,
+    "discount": 0,
+    "tax": 230,
+    "invoice_items": [
+      {
+        "source_key": "inv-item-1",
+        "quantity": 1,
+        "amount": 999,
+        "description": "Monthly subscription",
+        "amount_excluding_tax": 937,
+        "proration": false,
+        "period_start": 1655384214,
+        "period_end": 1655394214
+      },
+      {
+        "source_key": "inv-item-2",
+        "quantity": 3,
+        "amount": 399,
+        "description": "Bonus",
+        "amount_excluding_tax": 237,
+        "proration": true,
+        "period_start": 1655384214,
+        "period_end": 1655394214
+      }
+    ]
+  }
+}
+```
+
+## Syncing Plans and Prices with Tiers
+
+```json
+{
+  "category": "revenue",
+  "plan": {
+    "id": "plan-399-monthly-plus",
+    "name": "Solo Plan Plus",
+    "active": true
+  },
+  "price": {
+    "id": "price-399-monthly-plus",
+    "plan": "solo-plan-plus",
+    "name": "3.99 / month - plus",
+    "interval": "month",
+    "interval_count": 12,
+    "type": "recurring",
+    "billing_scheme": "per_unit",
+    "currency": "USD",
+    "active": true,
+    "tiers": [
+      {
+        "unit_amount": 399,
+        "flat_amount": 100,
+        "up_to": 500
+      },
+      {
+        "unit_amount": 199,
+        "flat_amount": 299,
+        "up_to": 399
+      }
+    ]
+  }
+}
+```

@@ -1,0 +1,94 @@
+---
+title: Config
+description: Config events set up goals and signals in your Valued project
+---
+
+The `config` event category is for setting up various elements of your Valued project. Configurable elements include [goals](/core-resources/goals) and [signals](/core-resources/signals).
+
+A new `config` event overwrites the previous `config` event. Make sure to extend configs when you want to expand your goals and signals.
+
+## Event format
+
+Configuration events are identified with `category=config`.
+
+### Setting up goals
+
+```json
+{
+    "category": "config",
+    "data": {
+        "goals": [
+            {
+                "name": "Created a sale",
+                "action_key": "sale.created",
+                "threshold": 1
+            },
+            {
+                "name": "Setup payment provider",
+                "action_key": "payment_provider.setup",
+                "threshold": 1
+            },
+            {
+                "name": "Recieved 5 payments",
+                "action_key": "payment.created",
+                "threshold": 5
+            }
+        ]
+    }
+}
+```
+
+### Setting signals
+
+```json
+{
+    "category": "config",
+    "data": {
+        "signals": [
+            {
+                "name": "Generating Reports",
+                "action_key": "report.generated",
+                "outcome": "negative",
+                "period": "45d",
+                "threshold": -0.1
+            },
+            {
+                "name": "Installations",
+                "action_key": "installation.summary",
+                "outcome": "negative",
+                "period": "45d",
+                "threshold": -0.2,
+                "aggregate": "sum",
+                "attribute": "total"
+            }
+        ]
+    }
+}
+```
+
+
+### Setting signal and goals
+
+```json
+{
+    "category": "config",
+    "data": {
+        "goals": [
+            {
+                "name": "Created a sale",
+                "action_key": "sale.created",
+                "threshold": 1
+            },
+        ],
+        "signals": [
+            {
+                "name": "Generating Reports",
+                "action_key": "report.generated",
+                "outcome": "negative",
+                "period": "45d",
+                "threshold": -0.1
+            }
+        ]
+    }
+}
+```

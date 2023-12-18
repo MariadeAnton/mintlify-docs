@@ -1,0 +1,26 @@
+---
+title: Price
+description: Unit cost, currency and interval for a given
+---
+
+Use price to define the unit of cost, currency and billing cycle for recurring purchases.
+
+Your pricing-model associates a `price` with a given fixed-recurring plan, with a given unit of its corresponding tier, or charges all units based on volume purchased. 
+
+## The price model
+
+The price model has all the information specifying how much, how often and when to charge the given amount.
+Set your pricing model using the [`tiers`](/revenue-resources/tier) object.
+### Properties
+
+| Name             | Type                              | Required | Description                             | 
+| ---------------- | --------------------------------- | -------- | --------------------------------------- |
+| `id`             | `string`                          | Yes      | Unique identifier for this price.                       |
+| `name`           | `string`                          | No       | The name of a price. Use a brief description of the price.|
+| `interval`       | `string`                          | Yes      | Billing frequency. Either `day`, `week`, `month` or `year`. |
+| `interval_count` | `integer`                         | Yes      | How many times a plan should recur.      |
+| `billing_scheme` | `string`                          | Yes      | How to understand the price per period. Either `per_unit` or `tiered`.|
+| `currency`       | `string`                          | Yes      | [Three-letter ISO currency code](https://www.iso.org/iso-4217-currency-codes.html), in lowercase.|
+| `active`         | `boolean`                         | Yes      | Whether this price is active for new purchases. |
+| `unit_amount`    | `integer`                         | Yes      | The unit amount in cents to be charged, represented as an integer.|
+| `tiers`          | `array of hashes`                 | Yes      | The pricing tier this price belongs to. See [`tiers`](/revenue-resources/tier).                           |

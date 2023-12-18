@@ -1,0 +1,102 @@
+---
+title: Goals and Signals
+description: Configure goals and signals for your customers to reach.
+---
+
+Configuration of [goals](/core-resources/goal) and [signals](/core-resources/signal) happens through the [config](/events/config) event type. In this guide, you will learn how to design your goals and signals, and how to send those through to your Valued project.
+
+Valued provides two ways to configure goals and signals: GitHub Actions or one of the [SDKs](/guides/sdks). GitHub Actions is the recommended way.
+
+## Github Actions
+
+In the following example, we are point of sale SaaS company and we are creating two goals for our customers:
+
+* Customer making their first widget sale
+* Customer receiving 6 payments
+
+And, a signal to check if sales drop have dropped by 10% or more in the last 28 days in comparison to the previous.
+
+### Single configuration file 
+
+You can create a single configuration file called `valued.yaml` or `.valued.yaml` either at the top level, or inside a directory called `config` or `.config`.
+
+Valued's configuration file supports `.json`, `.toml`, `.yml` and `.yaml` formats.
+
+#### Example
+
+`.config/valued.yaml`
+
+```yaml
+goals:
+- name: Created a sale
+  action_key: sale.created
+- name: 6 payments receieved
+  action_key: payment.received
+  threshold: 6
+signals:
+- name: Monthly sales
+  action_key: sale.created
+  outcome: negative
+  threshold: -10
+  period: 28d
+```
+
+### Multiple files
+
+You can also create individual configuration files for goals and signals.
+
+Create a `valued`, `.valued`, `config/valued`, or `.config/valued` directory, and add one `goals.toml` and one `signals.toml` file.
+
+#### Example
+
+`.valued/goals.toml`
+
+```toml
+["Created a sale"]
+action-key = "sale.created"
+
+["6 payments received"]
+action-key = "payment.received"
+threshold = 6
+```
+
+`.valued/signals.toml`
+
+```toml
+["Monthly sales"]
+action-key = "sale.created"
+outcome = "negative"
+threshold = -10
+period = "28d"
+```
+
+### Set up the GitHub Action
+
+1. Obtain a token for the Valued API. In the Valued Dashboard, click Integrations and copy "API Key". Store it in the `VALUED_API_KEY` secret.
+
+2. Add the following step to your GitHub Action workflow:
+
+```yaml
+- uses: valued-app/config-sync@main
+  with:
+    token: ${{ secrets.VALUED_API_KEY }}
+```
+
+A full workflow only pushing the configuration might look like this:
+
+```yaml
+name: valued-config-sync
+
+on:
+  push:
+    branches: [main]
+
+jobs:
+  config-upload:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Upload Valued configuration
+        uses: valued-app/config-sync@main
+        with:
+          token: ${{ secrets.VALUED_TOKEN }}
+```

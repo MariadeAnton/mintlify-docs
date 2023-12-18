@@ -1,0 +1,38 @@
+---
+title: Customer
+description: A customer groups one or more users.
+---
+
+Customers are a top-level grouping of one or more [users](/core-resources/user). This enables your team to understand how feature adoption and usage activity happens on a customer account level. 
+
+Customer accounts can include personal accounts, team accounts, company accounts, and organization accounts.
+
+## The customer model
+
+The customer model has all the information relating to the customer such as the unique identifier in your systems, it's name, location and other identifying information related to other services.
+
+### Properties
+
+`id` _string_
+
+Unique identifier for the customer in your application.
+
+`name`  _string_
+
+The name of the customer.
+
+`email` _string_
+
+The email for the customer.
+
+`website` _string_
+
+The website for the customer.
+
+`links`  _[string]_
+
+Custom links to other services related to the customer.
+
+`location.country`  _string_
+
+The country the customer is located. This should be in the ISO 3166-1 alpha-2 format.

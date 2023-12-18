@@ -1,0 +1,35 @@
+---
+title: Pageview
+description: Tracking users navigating your application
+---
+
+The `pageview` event category enables you to understand how a user is navigating your product, and what pages they are viewing more than others.
+
+The [user](/core-resources/user) is required, but the [customer](/core-resources/customer) is optional. A user undertakes `pageview` events, but pageviews are not necessarily bound to a [customer](/core-resources/customer) account. 
+
+Make sure to include the [customer](/core-resources/customer) id whenever the page being viewed is associated with a customer account.
+
+## Event format
+
+Identify pageview events with `category=pageview`.
+
+### Sending a pageview
+
+```json
+{
+    "category": "pageview",
+    "user": { 
+        "id": "457" 
+    },
+    "customer": { 
+        "id": "124"
+    },
+    "attributes": {
+        "source": {
+            "url": "https://big.company.com/learn/to/waltz",   
+            "referrer": "https://a.shared.link/wow",
+            "page_title": "10 easy steps to dancing the waltz!"
+        },
+    },
+}
+```

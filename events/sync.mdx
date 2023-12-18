@@ -1,0 +1,95 @@
+---
+title: Sync
+description: Syncing your customer and user data
+---
+
+The sync event category is for updating [user](/core-resources/user) and [customer](/core-resources/customer) profile information and, associated customers and users with [memberships](/core-resources/membership) on Valued. 
+
+To guarantee your data is always up-to-date, include `sync` events in your backend application, running one-off or periodic bulk `sync` imports.
+
+To sync a [user](/core-resources/user) or a [customer](/core-resources/customer) is required, but not both. If both are included, Valued ignores this event.
+
+A [membership](/core-resources/membership) event should only include the membership details.
+
+All event attributes included in the [user](/core-resources/user) or [customer](/core-resources/customer) structure will update all information we have on the [user](/core-resources/user) or [customer](/core-resources/customer).
+
+## Event format
+
+Sync events are identified with `category=sync`.
+
+### Customer sync
+
+```json
+{
+    "category": "sync",
+    "customer": {
+        "id": "123",
+        "name": "Mystery Shack",
+        "location": {
+            "country": "US",
+            "state": "OR"
+        }
+    }
+}
+```
+
+### User sync
+
+```json
+{
+    "category": "sync",
+    "user": {
+        "id": "456",
+        "name": "Stanley Pines",
+        "email": "stanley.pines@mysteryshack.biz",
+        "location": {
+            "country": "US",
+            "state": "OR"
+        },
+        "hobbies": [
+            "grifting",
+            "gold chains",
+        ]
+    }
+}
+```
+
+### Single Membership Sync
+
+```json
+{
+  "category": "sync",
+  "membership": {
+    "customer_id": "456",
+    "user_id": "123",
+    "role": "admin",
+    "joined_at": 1685702164,
+    "left_at": null
+  }
+}
+```
+
+### Multiple Membership Customer Sync
+
+```json
+{
+  "category": "sync",
+  "customer": {
+    "id": "123",
+    "memberships": [
+      {
+        "user_id": "457",
+        "role": "viewer",
+        "joined_at": 1685702164,
+        "left_at": null
+      },
+      {
+        "user_id": "456",
+        "role": "admin",
+        "joined_at": 1685702164,
+        "left_at": null
+      }
+    ]
+  }
+}
+```

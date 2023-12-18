@@ -1,0 +1,46 @@
+---
+title: Signal
+description: Tracking user behaviour changes over time.
+---
+
+Signals are a method for tracking your [customers](/core-resources/customer) behaviour over time. These are helpful to identify the drop off in usage of features as potential retention issues or an increase in usage as a signal for expansion.
+
+## The signal model
+
+### Properties
+
+`name` _string_
+
+A unique name representing the signal.
+
+`action_key`  _string_
+
+The [action](/events/action) you want to track.
+
+`metric` _string_
+
+Use `metric` instead of `action_key` to specify a custom `name` and `period` for the two default signals: `active_unique_users` and `user_sessions`.
+
+`outcome`  _string_
+
+Whether the signal is `positive` or `negative` in nature. (Default: `positive`)
+
+`aggregate`  _string_
+
+How to aggregate when comparing the data between the two periods. (Default: `sum`) 
+
+`attribute`  _string_
+
+The attribute in the event data to use for calculating the `aggregate=sum`. 
+
+`threshold`  _integer_
+
+The percentage difference between the previous and current periods to act as the trigger for the signal. It can be either a positive or negative difference.
+
+`period` _string_
+
+The period lengths to aggregate data over.
+
+`alert_if_no_activity` _boolean_
+
+The signal will activate when there are zero events in the current period. (Default: `false`)

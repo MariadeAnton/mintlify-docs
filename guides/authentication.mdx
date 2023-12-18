@@ -1,0 +1,25 @@
+---
+title: Authentication
+description: Learn to authenticate your messages to Valued
+---
+
+You'll need to authenticate all the requests that you send to the Valued Event Listener. In this guide, we will look at how authentication works. Valued authenticates all your requests with the OAuth2 with a token. 
+
+## OAuth2 with bearer token
+
+When establishing a connection using OAuth2, you need your access token which you can find in the Valued dashboard under the Integrations page. 
+
+Here's how to add the token to the request header using cURL:
+
+```bash
+curl -X POST https://ingest.valued.app/events \
+    -H 'Authorization: Bearer my-project-token' \
+    -H 'Content-Type: application/json' \
+    -d '{"category": "action", "key": "account.signin", "user": {"id": 123}}'
+```
+
+## Using an SDK
+
+If you use one of our official SDKs, you won't have to worry about any of the above — fetch your access token from the Valued dashboard under Integrations page, and the client library will take care of the rest. All the client libraries use OAuth2 behind the scenes.
+
+[Check out our list of first-party SDKs](/guides/sdks)

@@ -1,0 +1,14 @@
+---
+title: Revenue Overview
+description: How the revenue models map to each other.
+---
+
+[Subscriptions](subscription) charge one or several [plans](plan) to a [customer](/core-resources/customer) on a regular basis.
+
+A [subscription item](subscription-item) connects a subscription to one or several plans. 
+
+When your business model uses a baseline subscription and add-on features that top that up on a recurring basis, you specify for them one subscription with several subscription items. Each subscription item being a different add-on that they can add purchase on top of their subscription.
+
+[Prices](price) specify what to charge, when and how often. Use [tiers](tiers) to define each pricing tier your product might have. Specify in each price which tier it belongs to.
+
+Each subscription generates an [invoice](invoice) when it's time to charge a customer. It'll have as many [Invoice Items](invoice-item) as subscription items and automatic-prorations it might include.

@@ -1,0 +1,60 @@
+---
+title: Changelog
+description: Notes about the changes to the application over time
+---
+
+
+## Ingesting behavioural data from Segment
+_August 25th, 2023_
+
+### What
+
+Valued supports a Segment integration which ingests Page, Screen, Track, Group and Identity events.
+
+### Why
+
+Intgrating onto a new behavioural tracking tool can be difficult, especially if engineering time is currently limited. This change allows you to leverage your existing Segment integration to send us the events you already send there.
+
+### Further details
+
+Learn more about [setting up segment](/integrations/segment).
+
+_Delivered by the stupendous Vittoria ❤️_
+
+---
+
+## Custom revenue ingestion: send subscription and invoice data via Valued
+_August 11th, 2023_
+
+### What
+
+The Valued integration now accepts a new category of message `revenue` which ingests details relating to invoices, subscriptions, plans and prices.
+
+### Why
+
+Not every organization uses "insert large payment processor here". This change allows us to ingest events related to revenue via the Valued integration type so if you've got a custom method for billing your customers we can associate those details in Valued.
+
+### Further details
+
+Learn more about [setting up revenue events](/revenue-resources/overview).
+
+_Delivered by the amazing Peter ❤️_
+
+---
+
+## Default signals for user sessions
+_August 3rd, 2023_
+
+### What
+
+By default Valued projects get two new Signals when they are created, the number of user sessions over 28 days and the number unique users over 28 days.
+
+### Why
+
+Tracking your users usage of you application is one of the best signals of retention. Simply put if they are not using your application they are unlikely to renew their subscription. This change adds two new signals to every project by default  
+
+### Further details
+
+Learn more about [setting up signals](/guides/goals-and-signals).
+
+_Delivered by the remarkable Abbie ❤️_

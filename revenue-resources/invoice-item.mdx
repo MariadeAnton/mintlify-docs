@@ -1,0 +1,22 @@
+---
+title: Invoice Item
+description: An invoice line item 
+---
+
+Each invoice item represents a component line of an invoice. Each of these items, represent something you charge the customer for.
+
+## The invoice item model
+Invoice items support charging for a one-off charge or proration adjustments due to plan upgrades or downgrades.
+
+### Properties
+
+| Name                   | Type      | Required | Description                      |
+| ---------------------- | --------- | -------- | -------------------------------- |
+| `id`                   | `string`  | Yes      | Unique identifier                |
+| `quantity`             | `string`  | Yes      | Item's quantity                  |
+| `amount`               | `integer` | Yes      | An amount that was paid          |
+| `period_start`         | `integer` | No       | A start of a subscription period |
+| `period_end`           | `integer` | No       | An end of a subscription period  |
+| `proration`            | `boolean` | No       | Whether the invoice item is an automatic proration adjustment from when the customer switched plans                    |
+| `description`          | `string`  | No       | Item's description               |
+| `amount_excluding_tax` | `integer` | No       | An amount without the tax        |
