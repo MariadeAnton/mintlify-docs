@@ -27,8 +27,8 @@
   },
   "navigation": [
     {
-      "group": "Start here",
-      "pages": ["guides/getting-started"]
+      "group": "Introduction",
+      "pages": ["introduction", "guides/getting-started"]
     },
     {
       "group": "Guides",
