@@ -1,0 +1,40 @@
+---
+title: Event Ingestion API
+description: Sending event data from your application.
+---
+
+Send `sync`, `action`, `screen`, `pageview`, `config` and `revenue` events through the `events` ingestion API.
+
+The endpoint to use is: `https://ingest.valued.app/events`
+
+## OAuth2 with bearer token
+
+When establishing a connection using OAuth2, you need your access token which you can find in the Valued dashboard under the Integrations page.
+
+Here’s how to add the token to the request header using cURL
+
+Two headers are required:
+
+- `Authorization` header, for your Projects API token in the form of `Bearer {token}` as described in [RFC-6750](https://www.rfc-editor.org/rfc/rfc6750.html).
+- `Content-Type` header, set to `application/json`.
+
+For example (using `cURL`):
+
+```bash
+curl -X POST https://ingest.valued.app/events \
+-H 'Authorization: Bearer my-project-token' \
+-H 'Content-Type: application/json' \
+-d '{"category": "action", "key": "account.signin", "user": {"id": 123}}'
+```
+
+The ingestion API does not validate the JSON data you send, instead we accept the data and add it to our queue for processing.
+
+There are highly available `listeners` in various global regions which respond within milliseconds, and process the event data without the possibility of affecting the API response time.
+
+There are following `listener` regions:
+
+- Sydney, Australia
+- Brussels, Europe
+- North Virginia, USA
+
+If you require a `listener` in a different region, please contact us at hello@valued.app.

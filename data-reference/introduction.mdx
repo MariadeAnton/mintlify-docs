@@ -1,0 +1,53 @@
+---
+title: Introduction
+description: Understanding the Valued data model, and how to use it to your advantage.
+---
+
+## Overview
+
+The core of the Valued data model is based on [events](#events), [customers](#customers), and [users](#users), scoped to your [project](#projects).
+
+![Valued's data model](/images/core-data-model.jpg)
+
+This data model allows us to better understand your users, the customer accounts they belong to, and the actions they take within your product.
+
+Modern B2B SaaS products support users belonging to multiple customer accounts, and this is reflected in our [event](#events) data modeling. 
+
+We also support the concept of [customer events](#customer-events) as we understand that not all events are associated with a user, For example, if you are extending the trial of a customer, you only need to associate that event with the customer.
+
+---
+
+## Core models
+
+### Events
+
+To understand feature adoption by your [customers](#customers) and [users](#users) you will need to capture events that represent feature usage and activity. This includes [action](/core/event-definitions#action-events) and [page view](/core/event-definitions#page-view-events) activity throughout your product.
+
+To update information related to a customer or user you can send a [sync](/core/event-definitions#sync-events) to Valued.
+
+More information on the different events you can send to Valued, along with full specifications can be found on the [Event Definitions](/core/event-definitions) page.
+
+---
+
+### Customers
+
+Customers are a top-level grouping of one or more users. This enables your team to understand how feature adoption and usage activity happens on a customer account level. 
+
+Customer accounts can include personal accounts, team accounts, company accounts, and organization accounts.
+
+Additionally, we support [users](#users) belonging to more than one customer, giving you the flexibility to model team membership as your product models it.
+
+As an example, we recommend capturing and [syncing](/core/event-definitions#sync-events) the following information:
+
+```
+id: 123
+name: "Highly Valued, Inc."
+email: "hello@valued.app"
+website: "https://valued.app"
+location:
+  country: "USA"
+  state: "California"
+plan_type: "free"
+```
+
+---

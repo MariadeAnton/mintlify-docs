@@ -1,0 +1,23 @@
+---
+title: Python SDK
+description: Send data to Valued using the Python SDK
+---
+
+1. Install the SDK
+
+```
+pip install valued
+```
+
+2. Setup a client
+
+```python
+import os
+import valued
+# Get the API key for authentication.
+token = os.environ.get("VALUED_API_KEY") 
+# Create a client
+client = valued.Client(token=token)
+```
+
+For more details, check:

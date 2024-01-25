@@ -32,23 +32,11 @@
     },
     {
       "group": "Guides",
-      "pages": ["guides/authentication", "guides/capturing-behaviour", "guides/goals-and-signals", "guides/muting-a-customer"]
+      "pages": ["guides/capturing-behaviour", "guides/goals-and-signals", "guides/muting-a-customer", "guides/ingestion-api"]
     },
     {
       "group":"Integrations",
       "pages":["integrations/sdks", "integrations/stripe", "integrations/segment", "integrations/intercom"]
-    },
-    {
-      "group":"Events",
-      "pages":["events/sync", "events/action", "events/screen", "events/pageview", "events/config", "events/revenue"]
-    },
-    {
-      "group":"Core Resources",
-      "pages":["core-resources/customer", "core-resources/user", "core-resources/goal", "core-resources/signal", "core-resources/membership"]
-    },
-    {
-      "group":"Revenue Resources",
-      "pages":["revenue-resources/overview", "revenue-resources/subscription", "revenue-resources/subscription-item", "revenue-resources/plan", "revenue-resources/price" , "revenue-resources/tiers", "revenue-resources/invoice", "revenue-resources/invoice-item"]
     },
     {
       "group": "Introduction",
@@ -57,11 +45,33 @@
     {
       "group": "Legal",
       "pages": ["legal/subprocessors"]
+    },
+    {
+      "group": "Data reference",
+      "pages": ["data-reference/introduction"]
+    },
+    {
+      "group":"Core Resources",
+      "pages":["data-reference/core-resources/customer", "data-reference/core-resources/user", "data-reference/core-resources/goal", "data-reference/core-resources/signal", "data-reference/core-resources/membership"]
+    },
+    {
+      "group":"Events",
+      "pages":["data-reference/events/sync", "data-reference/events/action", "data-reference/events/screen", "data-reference/events/pageview", "data-reference/events/config", "data-reference/events/revenue"]
+    },
+    {
+      "group":"Revenue Resources",
+      "pages":["data-reference/revenue-resources/overview", "data-reference/revenue-resources/subscription", "data-reference/revenue-resources/subscription-item", "data-reference/revenue-resources/plan", "data-reference/revenue-resources/price" , "data-reference/revenue-resources/tiers", "data-reference/revenue-resources/invoice", "data-reference/revenue-resources/invoice-item"]
     }
   ],
   "footerSocials": {
     "twitter/X": "https://twitter.com/valuedapp",
     "github": "https://github.com/valued-app",
     "linkedin": "https://www.linkedin.com/company/highly-valued"
-  }
+  },
+  "tabs": [
+    {
+        "name": "Data reference",
+        "url": "data-reference"
+    }
+]
 }

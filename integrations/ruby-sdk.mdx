@@ -1,0 +1,23 @@
+---
+title: Ruby SDK
+description: Send data to Valued using the Ruby SDK
+---
+
+1. Install the SDK
+
+```ruby
+gem "valued-client"
+gem "concurrent-ruby-ext", "~> 1.1" # optional, but will speed up processing
+```
+
+2. Setup a client
+
+```ruby
+require "valued"
+# Get the token for authentication.
+token = ENV.fetch("VALUED_API_KEY") # or wherever you store credentials
+# Create a client 
+client = Valued::Client.new(token)
+```
+
+For more details, check: 
