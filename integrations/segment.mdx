@@ -8,10 +8,23 @@ Valued supports behavioural data directly from Segment. Follow this tutorial to 
 1. Log into Valued at [https://highly.valued.app/](https://highly.valued.app/)
 2. In your organization, select the project that you'd like to connect.
 3. Click **Integrations** in the left-side menu.
-4. Click **🔗 Connect** with Segment.
+4. Click **🔗 API Key** with Segment.
 5. Log into your Segment account.
-6. Select the account you'd like to connect to Valued and click Connect.
-7. Once connected, you'll be redirected back to Valued.
+6. From the Destinations menu select **+ Add destination**.
+7. Choose the **Webhooks (Actions)** destination.
+8. Add the destination setting it up with your Segment JS source and any backend sources.
+9. Name your destination and choose to **Fill in settings manually**.
+10. From the destination menu click the **Mappings** tab.
+11. Add a new mapping with the **Send** action.
+12. Add **Event Type** is Identify, Group, Track and Screen to the *Select events to map and send* section.
+![Segment Event Types -  Valued](/images/integrations/segment_event_setup.png)
+13. Click **Load Test Event from Source** to confirm you get an event based on the mappings.
+14. In Select Mappings add:
+  * https://stream.valued.app/integrations/segment to URL.
+  * Authorization => Bearer **API KEY** using the API key from step 4.
+![Segment Event Mapping -  Valued](/images/integrations/segment_mapping_setup.png)
+15. Click **Send test event to destination** and confirm you get the response message "thank you!".
+16. Save the mapping and enable it from the **Mappings** tab. 
 
 Now, you have integrated Segment behavioural data with Valued and can see it in the Valued dashboard and pages.
 
